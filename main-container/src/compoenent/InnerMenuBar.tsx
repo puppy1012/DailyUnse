@@ -13,13 +13,33 @@ const InnerMenuBar = () => {
 
     const [isModalOpen, setIsModalOpen] = useState(false);
 
-    const handleIconClick = () => {
-        setIsModalOpen(true);
-    };
-
     const closeModal = () => {
         setIsModalOpen(false);
     };
+
+    const [fortune, setFortune] = useState(""); //운세 저장용
+
+    const fetchFortune = async (label) => {
+        const url = "https://mocki.io/v1/ea457ea8-5aa9-49b1-a44a-c0b3cdfffe56";
+
+        try {
+            const res = await fetch(url);
+            const data = await res.json();
+
+            const messages = data[label]; // "오늘의 운세" → ["...", "..."]
+            if (Array.isArray(messages)) {
+                const randomIndex = Math.floor(Math.random() * messages.length);
+                setFortune(messages[randomIndex]);
+            } else {
+                setFortune("운세 정보를 불러올 수 없습니다.");
+            }
+
+            setIsModalOpen(true);
+        } catch (err) {
+            setFortune("운세 불러오기 실패");
+            setIsModalOpen(true);
+        }
+    }
 
     return (
         <AppWrapper>
@@ -32,7 +52,7 @@ const InnerMenuBar = () => {
                 <Grid>
                     {items.map((item, idx) => (
                         <GridItem key={idx}>
-                            <ImageWrapper onClick={handleIconClick}>
+                            <ImageWrapper onClick={() => fetchFortune(item.label)}>
                                 <Icon src={item.src} alt={item.label} />
                             </ImageWrapper>
                             <Label>{item.label}</Label>
@@ -47,6 +67,7 @@ const InnerMenuBar = () => {
                         <CloseButton onClick={closeModal}>×</CloseButton>
                         <h2>당신의 앞날이 궁금하다면?</h2>
                         <p>지금 사주정보를 입력하고 점신에서 알아봐요!</p>
+                        <p>{fortune || "운세를 불러오는 중입니다..."}</p>
                         <YellowButton>점신 시작하기</YellowButton>
                         <GrayButton>기존 회원 로그인하기</GrayButton>
                     </Modal>
