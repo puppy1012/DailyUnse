@@ -6,6 +6,9 @@ import "swiper/css/mousewheel";
 
 import PageOne from "./PageOne";
 import PageTwo from "./PageTwo";
+import PageThree from "./PageThree";
+import PageFour from "./PageFour";
+import PageFive from "./PageFive";
 
 export const FullpageSlides=()=> {
     return (
@@ -22,6 +25,15 @@ export const FullpageSlides=()=> {
 
             <SwiperSlide>
                 <PageTwo />
+            </SwiperSlide>
+            <SwiperSlide>
+                <PageThree />
+            </SwiperSlide>
+            <SwiperSlide>
+                <PageFour />
+            </SwiperSlide>
+            <SwiperSlide>
+                <PageFive />
             </SwiperSlide>
         </Swiper>
     );
