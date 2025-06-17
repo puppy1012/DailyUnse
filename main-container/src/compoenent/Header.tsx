@@ -1,11 +1,12 @@
 import React from 'react'
+import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import WeatherWidget from 'weatherForecastApp/App';
 
 
-
-
 export default function Header() {
+  const navigate = useNavigate();
+
   return (
     <HeaderWrapper>
       <WeatherWidget />
@@ -13,7 +14,7 @@ export default function Header() {
         <SearchBtn>
             <img src="/assets/Isearch.png" alt="Search" width={34} height={34} />
         </SearchBtn>
-        <MyPageBtn>
+        <MyPageBtn onClick={() => navigate('/authentication')}>
             <img src="/assets/Imypage.png" alt="mypages" width={12}/>
         </MyPageBtn>
       </RightWrapper>

@@ -7,7 +7,7 @@ import * as FaIcons from 'react-icons/fa';
 export default function NavBar() {
   return (
     <BottomNavWrapper>
-      <NavItem>
+      <NavItem >
         <FaIcons.FaBook />
         점신
       </NavItem>
