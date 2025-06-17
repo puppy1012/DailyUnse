@@ -7,7 +7,7 @@ const TimeInputPage = () => {
     const navigate = useNavigate();
 
     const { name, gender, birth, solar } = location.state || {};
-    const [showTermsModal, setShowTermsModal] = useState(false);
+    const [showTermsModal, setShowTermsModal] = useState(true);
     const [showSNSModal, setShowSNSModal] = useState(false);
 
     const handleFinalSubmit = () => {
@@ -322,6 +322,11 @@ const SNSIcon = styled.img`
 `;
 
 const ModalConfirmButton = styled(ConfirmButton)`
-  background-color: #ddd;
-  color: #333;
+    background-color: #ddd;
+    color: #333;
+    border-radius: 12px;
+
+    &:hover {
+        background-color: #bbb;
+    }
 `;
