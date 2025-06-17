@@ -5,6 +5,7 @@ import styled from 'styled-components';
 import NavBar from './NavBar';
 import FortuneSwiper from "./FortuneSwiper";
 import TodayQuote from "./TodayQuote";
+import InnerMenuBar from "./InnerMenuBar";
 
 export default function MainPage() {
   return (
@@ -15,6 +16,7 @@ export default function MainPage() {
           {/* 다른 컴포넌트 이 아래에 추가 */}
             <FortuneSwiper/>
             <TodayQuote/>
+            <InnerMenuBar/>
           {/* 위까지 추가가  */}
           <Footer />
         </MainContainer>
