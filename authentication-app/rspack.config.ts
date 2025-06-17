@@ -1,6 +1,6 @@
 import * as path from "node:path";
 import { defineConfig } from "@rspack/cli";
-import { rspack } from "@rspack/core";
+import { rspack, DefinePlugin } from "@rspack/core";
 import * as RefreshPlugin from "@rspack/plugin-react-refresh";
 import { ModuleFederationPlugin } from "@module-federation/enhanced/rspack";
 
@@ -80,6 +80,15 @@ export default defineConfig({
     }),
     new ModuleFederationPlugin(mfConfig),
     isDev ? new RefreshPlugin() : null,
+    new DefinePlugin({
+      "process.env.REACT_APP_KAKAO_AUTHENTICATION_URL": JSON.stringify(process.env.REACT_APP_KAKAO_AUTHENTICATION_URL),
+      "process.env.NODE_ENV": JSON.stringify(process.env.NODE_ENV),
+      "process.env.REACT_APP_GOOGLE_AUTHENTICATION_URL": JSON.stringify(process.env.REACT_APP_GOOGLE_AUTHENTICATION_URL),
+    }),
+
+
+
+
   ].filter(Boolean),
   optimization: {
     minimizer: [

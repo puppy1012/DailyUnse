@@ -10,7 +10,7 @@ export default function NavBar() {
 
     return (
     <BottomNavWrapper>
-        <NavItem onClick={() => navigate("/fullpage")}>
+      <NavItem onClick={() => navigate("/fullpage")}>
             <FaIcons.FaBook />
             점신
         </NavItem>
