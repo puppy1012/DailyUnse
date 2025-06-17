@@ -12,8 +12,14 @@
     "start": "lerna run start --parallel"
   },
   "devDependencies": {
+    "@types/styled-components": "^5.1.34",
     "cross-env": "^7.0.3",
     "external-remotes-plugin": "^1.0.0",
     "lerna": "^8.2.2"
+  },
+  "dependencies": {
+    "react-icons": "^5.5.0",
+    "styled-components": "^6.1.19",
+    "swiper": "^11.2.8"
   }
 }

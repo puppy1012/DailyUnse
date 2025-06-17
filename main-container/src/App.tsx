@@ -3,6 +3,7 @@ import ReactDOM from "react-dom/client";
 
 import { CircularProgress } from "@mui/material";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import MainPage from "./compoenent/MainPage";
 
 const AuthenticationApp = lazy(()=>import("authenticationApp/App"));
 const NavigationBarApp=lazy(()=> import("navigationBarApp/App"));
@@ -14,7 +15,7 @@ const App = () => {
         <BrowserRouter>
             <Suspense fallback={<CircularProgress />}>
                 <Routes>
-                    <Route path="/" element={<div>Home Page</div>} />
+                    <Route path="/" element={<MainPage />} />
                     <Route path="/authentication" element={<AuthenticationApp />} />
                     <Route path="/weather-forecast" element={<WeatherForecastApp />} />
                     <Route path="/navigation-bar" element={<NavigationBarApp />} />

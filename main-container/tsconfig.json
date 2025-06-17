@@ -12,11 +12,15 @@
     "moduleResolution": "bundler",
     "useDefineForClassFields": true,
     "allowImportingTsExtensions": true,
+    "baseUrl": "src",
     "paths": {
-      "*": ["./@mf-types/*"]
-    }
+      "@/*": ["*"],     // 일반적인 절대경로 alias
+      "*": ["./@mf-types/*"],
+      "@assets/*": ["assets/*"]
+
+    },
   },
-  "include": ["src"],
+  "include": ["src",  "src/types"],
   "ts-node": {
     "compilerOptions": {
       "module": "CommonJS"

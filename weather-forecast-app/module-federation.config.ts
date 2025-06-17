@@ -3,6 +3,8 @@ export const mfConfig = {
   filename: "remoteEntry.js",
   exposes: {
     "./App": "./src/App",
+    './WeatherWidget': './src/component/WeatherWidget',
+
   },
   shared: {
     react: { singleton: true, requiredVersion: "^18.2.0" },
