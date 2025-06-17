@@ -39,9 +39,9 @@ export default defineConfig({
 
   module: {
     rules: [
-      {
-        test: /\.svg$/,
-        type: "asset",
+      {//이승현 25.06.17
+        test: /\.(png|jpe?g|gif|svg)$/i,
+        type: "asset/resource",
       },
       {
         test: /\.css$/,
