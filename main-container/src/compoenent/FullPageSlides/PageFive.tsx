@@ -15,7 +15,7 @@ const PageFive = () => {
                     <Styled.StyledImage
                         src="https://www.jeomsin.co.kr/web_only/app_usage_guide/jeomsin_icon.png"
                         alt="점신 아이콘"
-                        style={{ maxWidth: "120px" }} // 아이콘은 크기 조절
+                        style={{ maxWidth: "150px" }} // 아이콘은 크기 조절
                     />
                 </Styled.ImageWrapper>
 
