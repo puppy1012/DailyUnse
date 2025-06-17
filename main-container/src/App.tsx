@@ -6,6 +6,8 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import MainPage from "./compoenent/MainPage";
 import MainLayout from "./layout/MainLayout";
 import FullPageSlides from "./compoenent/FullPageSlides/FullpageSlides";
+import SignUpIntroPage from "./compoenent/SignUpIntroPage";
+
 const AuthenticationApp = lazy(()=>import("authenticationApp/App"));
 const NavigationBarApp=lazy(()=> import("navigationBarApp/App"));
 const WeatherForecastApp=lazy(()=>import("weatherForecastApp/App"));
@@ -21,6 +23,7 @@ function App() {
                     <Route path="/authentication" element={<MainLayout><AuthenticationApp /></MainLayout>} />
                     <Route path="/weather-forecast" element={<WeatherForecastApp />} />
                     <Route path="/navigation-bar" element={<NavigationBarApp />} />
+                    <Route path="/start-jeomsin" element={<MainLayout><SignUpIntroPage /></MainLayout>} />
                 </Routes>
             </Suspense>
         </BrowserRouter>

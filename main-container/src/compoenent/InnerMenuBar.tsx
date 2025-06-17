@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
+import TodayFortunePage from "@/compoenent/TodayFortunePage.tsx";
+import { useNavigate } from "react-router-dom"
 
 const InnerMenuBar = () => {
     const items = [
@@ -41,6 +43,12 @@ const InnerMenuBar = () => {
         }
     }
 
+    const navigate = useNavigate();
+
+    const goToSignupIntro = () => {
+        navigate("/start-jeomsin");
+    }
+
     return (
         <AppWrapper>
             <Card>
@@ -68,7 +76,7 @@ const InnerMenuBar = () => {
                         <h2>당신의 앞날이 궁금하다면?</h2>
                         <p>지금 사주정보를 입력하고 점신에서 알아봐요!</p>
                         <p>{fortune || "운세를 불러오는 중입니다..."}</p>
-                        <YellowButton>점신 시작하기</YellowButton>
+                        <YellowButton onClick = {goToSignupIntro}>점신 시작하기</YellowButton>
                         <GrayButton>기존 회원 로그인하기</GrayButton>
                     </Modal>
                 </ModalBackdrop>

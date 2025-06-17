@@ -4,7 +4,12 @@ import NavBar from "../compoenent/NavBar";
 import Header from "../compoenent/Header";
 import Footer from "../compoenent/Footer";
 import { useLocation } from "react-router-dom";
+
 const MainLayout = ({ children }: { children: React.ReactNode }) => {
+    const location = useLocation();
+
+    const hideNavRoutes = ["/start-jeomsin", "/fullpage"]; // Nav 숨기고 싶은 경로들
+
     return (
         <AppLayout>
             <MainWrapper>
@@ -12,9 +17,10 @@ const MainLayout = ({ children }: { children: React.ReactNode }) => {
                     <Header />
                     {children}
                     {/* 🔥 /fullpage에서는 Footer 숨기기 */}
-                    {location.pathname !== "/fullpage" && <Footer />}
+                    {location.pathname !== "/fullpage" && location.pathname !== "/start-jeomsin" && <Footer />}
                 </MainContainer>
-                <NavBar />
+                    {/* ✅ 조건부 렌더링 */}
+                    {!hideNavRoutes.includes(location.pathname) && <NavBar />}
             </MainWrapper>
         </AppLayout>
     );
