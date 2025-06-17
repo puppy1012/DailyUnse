@@ -4,7 +4,7 @@ import ReactDOM from "react-dom/client";
 import { CircularProgress } from "@mui/material";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import MainPage from "./compoenent/MainPage";
-
+import FullPageSlides from "./compoenent/FullPageSlides/FullpageSlides";
 const AuthenticationApp = lazy(()=>import("authenticationApp/App"));
 const NavigationBarApp=lazy(()=> import("navigationBarApp/App"));
 const WeatherForecastApp=lazy(()=>import("weatherForecastApp/App"));
@@ -19,6 +19,7 @@ const App = () => {
                     <Route path="/authentication" element={<AuthenticationApp />} />
                     <Route path="/weather-forecast" element={<WeatherForecastApp />} />
                     <Route path="/navigation-bar" element={<NavigationBarApp />} />
+                    <Route path="/fullpage" element={<FullPageSlides />} />
                 </Routes>
             </Suspense>
         </BrowserRouter>

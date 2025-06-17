@@ -2,15 +2,18 @@ import styled from 'styled-components';
 import * as MdIcons from 'react-icons/md';
 import * as GiIcons from 'react-icons/gi';
 import * as FaIcons from 'react-icons/fa';
+import {useNavigate} from "react-router-dom";
 
 
 export default function NavBar() {
-  return (
+    const navigate = useNavigate();
+
+    return (
     <BottomNavWrapper>
-      <NavItem >
-        <FaIcons.FaBook />
-        점신
-      </NavItem>
+      <NavItem onClick={() => navigate("/fullpage")}>
+            <FaIcons.FaBook />
+            점신
+        </NavItem>
       <NavItem>
         <GiIcons.GiCrystalBall />
         운세
