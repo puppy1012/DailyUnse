@@ -1,6 +1,6 @@
 import * as path from "node:path";
 import { defineConfig } from "@rspack/cli";
-import { rspack } from "@rspack/core";
+import { rspack, DefinePlugin } from "@rspack/core";
 import * as RefreshPlugin from "@rspack/plugin-react-refresh";
 import { ModuleFederationPlugin } from "@module-federation/enhanced/rspack";
 
@@ -36,6 +36,8 @@ export default defineConfig({
   experiments: {
     css: true,
   },
+
+  
 
   module: {
     rules: [
@@ -80,7 +82,14 @@ export default defineConfig({
     }),
     new ModuleFederationPlugin(mfConfig),
     isDev ? new RefreshPlugin() : null,
+
+    new DefinePlugin({
+      "process.env.REACT_APP_KAKAO_REST_API_KEY": JSON.stringify(process.env.REACT_APP_KAKAO_REST_API_KEY),
+      "process.env.REACT_APP_WEATHER_API_KEY": JSON.stringify(process.env.REACT_APP_WEATHER_API_KEY),
+    })
   ].filter(Boolean),
+
+  
   optimization: {
     minimizer: [
       new rspack.SwcJsMinimizerRspackPlugin(),

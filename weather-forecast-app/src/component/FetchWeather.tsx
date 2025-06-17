@@ -27,6 +27,7 @@ export default function FetchWeather({ location }: Props) {
         const res = await fetch(url);
         const raw = await res.text();
 
+
         const data = JSON.parse(raw);
         const { resultCode, resultMsg } = data?.response?.header || {};
 

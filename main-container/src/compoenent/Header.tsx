@@ -1,7 +1,5 @@
 import React from 'react'
 import styled from 'styled-components';
-// import ISearch from '../assets/Isearch.png';
-// import IMyPage from '../assets/Imypage.png';
 import WeatherWidget from 'weatherForecastApp/App';
 
 
@@ -25,9 +23,7 @@ export default function Header() {
 
 
 const HeaderWrapper = styled.div`
-  position: fixed;
-  top:0;
-  width: calc(100% - 48px);
+  width: 100%;
   height: 36px;
   display: flex;
   justify-content: center;
@@ -35,7 +31,6 @@ const HeaderWrapper = styled.div`
 `;
 
 const RightWrapper = styled.div`
-    /* position: fixed; */
     display: flex;
     margin-left: auto;
     margin-right: 0;
@@ -44,10 +39,10 @@ const RightWrapper = styled.div`
 `
 
 const SearchBtn = styled.button`
-    cursor: pointer;
     background: none;
     outline: none;
     border:none;
+    cursor: pointer;
 
 `
 const MyPageBtn = styled.button`

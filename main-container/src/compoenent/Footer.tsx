@@ -55,6 +55,12 @@ const AdBox = styled.div`
     text-align: center;
     align-items: center;
     margin-top: 8px;
+    transition: all 0.3s ease-in;
+
+    &:hover {
+        background-color: rgb(102, 154, 255);
+        color:#fff;
+    }
     
 
 `
