@@ -1,13 +1,11 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 
-import "./index.css";
+// import "./index.css";
+import WeatherWidget from "./component/WeatherWidget";
 
 const App = () => (
-  <div className="mt-10 text-3xl mx-auto max-w-6xl">
-    <div>Name: weather-forecast-app</div>
-    <div>Framework: react-18</div>
-  </div>
+  <WeatherWidget />
 );
 
 export default App;
