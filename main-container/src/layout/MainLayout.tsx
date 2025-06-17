@@ -25,7 +25,7 @@ export default MainLayout;
 // 기존 스타일 그대로 유지
 const AppLayout = styled.div`
   width: 100vw;
-  height: 100%;
+  height: 100vh;
   background-color: #f9f9f9;
   display: flex;
   justify-content: center;
