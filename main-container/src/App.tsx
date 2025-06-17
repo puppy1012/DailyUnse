@@ -9,6 +9,7 @@ import FullPageSlides from "./compoenent/FullPageSlides/FullpageSlides";
 import SignUpIntroPage from "./compoenent/SignUpIntroPage";
 import GenderInputPage from "./compoenent/GenderInputPage.tsx";
 import BirthInputPage from "./compoenent/BirthInputPage.tsx";
+import TimeInputPage from "./compoenent/TimeInputPage.tsx";
 
 const AuthenticationApp = lazy(()=>import("authenticationApp/App"));
 const NavigationBarApp=lazy(()=> import("navigationBarApp/App"));
@@ -28,6 +29,7 @@ function App() {
                     <Route path="/start-jeomsin" element={<MainLayout><SignUpIntroPage /></MainLayout>} />
                     <Route path="/step2" element={<MainLayout><GenderInputPage /></MainLayout>} />
                     <Route path="/step3" element={<MainLayout><BirthInputPage /></MainLayout>} />
+                    <Route path="/step4" element={<MainLayout><TimeInputPage /></MainLayout>} />
                 </Routes>
             </Suspense>
         </BrowserRouter>
