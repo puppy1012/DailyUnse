@@ -7,6 +7,7 @@ import MainPage from "./compoenent/MainPage";
 import MainLayout from "./layout/MainLayout";
 import FullPageSlides from "./compoenent/FullPageSlides/FullpageSlides";
 import SignUpIntroPage from "./compoenent/SignUpIntroPage";
+import GenderInputPage from "./compoenent/GenderInputPage.tsx";
 
 const AuthenticationApp = lazy(()=>import("authenticationApp/App"));
 const NavigationBarApp=lazy(()=> import("navigationBarApp/App"));
@@ -24,6 +25,7 @@ function App() {
                     <Route path="/weather-forecast" element={<WeatherForecastApp />} />
                     <Route path="/navigation-bar" element={<NavigationBarApp />} />
                     <Route path="/start-jeomsin" element={<MainLayout><SignUpIntroPage /></MainLayout>} />
+                    <Route path="/step2" element={<MainLayout><GenderInputPage /></MainLayout>} />
                 </Routes>
             </Suspense>
         </BrowserRouter>
