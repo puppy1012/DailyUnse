@@ -5,7 +5,9 @@ import styled from 'styled-components';
 import NavBar from './NavBar';
 import FortuneSwiper from "./FortuneSwiper";
 import TodayQuote from "./TodayQuote";
+import {useNavigate} from "react-router-dom";
 import InnerMenuBar from "./InnerMenuBar";
+
 
 export default function MainPage() {
   return (
