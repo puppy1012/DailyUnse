@@ -1,17 +1,24 @@
 import React from 'react'
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import styled from 'styled-components';
 import WeatherWidget from 'weatherForecastApp/App';
 
 
 export default function Header() {
   const navigate = useNavigate();
+  const location = useLocation();
+
+  const hideNavRoutes = ["/search"]; // 숨기고 싶은 경로들
+
+  if (hideNavRoutes.includes(location.pathname)) {
+      return null;
+  }
 
   return (
     <HeaderWrapper>
       <WeatherWidget />
       <RightWrapper>
-        <SearchBtn>
+        <SearchBtn onClick={() => navigate("/search")}>
             <img src="/assets/Isearch.png" alt="Search" width={34} height={34} />
         </SearchBtn>
         <MyPageBtn onClick={() => navigate('/authentication')}>
