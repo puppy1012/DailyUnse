@@ -11,9 +11,11 @@ import "swiper/css/pagination";
 import fortune1 from "../../public/assets/fortuneSwiper/fortuneSwiper1.png";
 import fortune2 from "../../public/assets/fortuneSwiper/fortuneSwiper2.png";
 import fortune3 from "../../public/assets/fortuneSwiper/fortuneSwiper3.png";
-
-
-export const FortuneSwiper = () => {
+// 값을 잃어버리지않을거면 recoil 또는 localStorage을 사용해라
+interface Props {
+    name?: string;
+}
+export const FortuneSwiper = ({ name }: Props) => {
     const swiperRef = useRef<any>(null);
     const navigate = useNavigate(); // ✅ 추가
     return (
@@ -23,7 +25,7 @@ export const FortuneSwiper = () => {
                     <LeftText>운세</LeftText>
                     <RightSection>
                         <GrayText>선택</GrayText>
-                        <BoldText>게스트님</BoldText>
+                        <BoldText>{name ? `${name}님` : "게스트님"}</BoldText>
                         <img src={refreshIcon} alt="refresh" style={{ width: 18, height: 18, cursor: "pointer" }} />
                     </RightSection>
                 </HeaderInner>
