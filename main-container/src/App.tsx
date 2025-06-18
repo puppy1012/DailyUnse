@@ -11,7 +11,7 @@ import GenderInputPage from "./compoenent/GenderInputPage.tsx";
 import BirthInputPage from "./compoenent/BirthInputPage.tsx";
 import TimeInputPage from "./compoenent/TimeInputPage.tsx";
 import SearchPage from "./compoenent/SearchPage";
-
+import FortuneForm from "./compoenent/FortuneForm";
 const AuthenticationApp = lazy(()=>import("authenticationApp/App"));
 const NavigationBarApp=lazy(()=> import("navigationBarApp/App"));
 const WeatherForecastApp=lazy(()=>import("weatherForecastApp/App"));
@@ -32,6 +32,7 @@ function App() {
                     <Route path="/step3" element={<MainLayout><BirthInputPage /></MainLayout>} />
                     <Route path="/step4" element={<MainLayout><TimeInputPage /></MainLayout>} />
                     <Route path="/search" element={<MainLayout><SearchPage /></MainLayout>} />
+                    <Route path="/about" element={<MainLayout><FortuneForm/></MainLayout>}/>
                 </Routes>
             </Suspense>
         </BrowserRouter>
