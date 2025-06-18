@@ -13,6 +13,7 @@ import TimeInputPage from "./compoenent/TimeInputPage.tsx";
 import ServiceReady from "./compoenent/ServiceReady.tsx";
 import SearchPage from "./compoenent/SearchPage";
 import FortuneForm from "./compoenent/FortuneForm";
+import './index.css'
 
 const AuthenticationApp = lazy(()=>import("authenticationApp/App"));
 const NavigationBarApp=lazy(()=> import("navigationBarApp/App"));

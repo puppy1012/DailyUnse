@@ -18,7 +18,8 @@ const MainLayout = ({ children }: { children: React.ReactNode }) => {
                     {children}
                     {/* 🔥 /fullpage에서는 Footer 숨기기 */}
                     {/*{!["/fullpage", "/start-jeomsin", "/step2", "/step3", "/step4", "/search"].includes(location.pathname) && <Footer />}*/}
-                    {window.location.hostname === "localhost" && location.pathname === "/" && <Footer />}
+                    {window.location.hostname === "localhost" && location.pathname === "/"  && <Footer />}
+                    {location.pathname === "/service-ready" && <Footer />}
                 </MainContainer>
                     {/* ✅ 조건부 렌더링 */}
                     {!hideNavRoutes.includes(location.pathname) && <NavBar />}
@@ -30,8 +31,7 @@ const MainLayout = ({ children }: { children: React.ReactNode }) => {
 export default MainLayout;
 
 const AppLayout = styled.div`
-  width: 100%;
-  height: 100%;
+  /* height: 100vhs; */
   background-color: #f9f9f9;
   display: flex;
   justify-content: center;

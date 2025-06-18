@@ -82,6 +82,7 @@ const Wrapper = styled.div`
   padding: 1rem;
   max-width: 480px;
   margin: 0 auto;
+  height: 100vh;
 `;
 
 const Input = styled.input`

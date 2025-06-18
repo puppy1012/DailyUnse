@@ -38,19 +38,20 @@ export default function NavBar() {
 
 const BottomNavWrapper = styled.nav`
   display: flex;
-  width: 100%;
+  position:fixed;
+  width: 100vw;
   max-width: 480px;
   height: 64px;
-  margin-top: auto;
+  margin: 0 auto;
   /* padding: 0 24px; */
-  left: -10px;
+  left: 0;
   bottom: 0;
+  right:0;
   justify-content: space-around;
   align-items: center;
   background-color: white;
   border-top: 1px solid #efefef;
   box-shadow: 0 -1px 4px rgba(0, 0, 0, 0.05);
-  margin-top: auto;
   z-index: 100;
 `;
 

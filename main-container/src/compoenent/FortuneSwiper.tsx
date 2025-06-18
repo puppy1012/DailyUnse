@@ -42,7 +42,7 @@ export const FortuneSwiper = ({ name }: Props) => {
             >
                 {fortunes.map((item, idx) => (
                     <SwiperSlide key={idx}>
-                        <Card onClick={() => navigate('/about')}>
+                        <Card onClick={() => navigate('/service-ready')}>
                             <CardImage src={item.img} />
                             {/*<CardText>{item.text}</CardText>*/}
                         </Card>
