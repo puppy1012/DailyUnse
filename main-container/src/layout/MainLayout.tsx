@@ -18,6 +18,7 @@ const MainLayout = ({ children }: { children: React.ReactNode }) => {
                     {children}
                     {/* 🔥 /fullpage에서는 Footer 숨기기 */}
                     {!["/fullpage", "/start-jeomsin", "/step2", "/step3", "/step4", "/search"].includes(location.pathname) && <Footer />}
+                    {window.location.hostname === "localhost" && location.pathname === "/" && <Footer />}
                 </MainContainer>
                     {/* ✅ 조건부 렌더링 */}
                     {!hideNavRoutes.includes(location.pathname) && <NavBar />}
