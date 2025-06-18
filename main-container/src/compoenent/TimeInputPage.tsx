@@ -43,8 +43,8 @@ const TimeInputPage = () => {
                 <SubLabel>태어난 시간</SubLabel>
                 <HintText>
                     <TimeBox onClick={() => !unknownTime && timeInputRef.current?.click()} disabled={unknownTime}>
-                        <span>{birthTime ? birthTime : "시간을 선택해주세요"}</span>
-                        <ClockIcon>🕑</ClockIcon>
+                        <span>{birthTime ? birthTime : "시간을 선택해주세요 "}</span>
+                        <ClockIcon>⬇️</ClockIcon>
                         <HiddenTimeInput
                             ref={timeInputRef}
                             type="time"
@@ -109,12 +109,15 @@ const TimeInputPage = () => {
                     <ModalCard>
                         <h3>SNS 연동하기</h3>
                         <p>연동하지 않으면, 사주정보가 저장되지 않아요 😢</p>
-                        <SNSButtonRow>
-                            <SNSIcon src="/naver.png" alt="Naver" />
-                            <SNSIcon src="/kakao.png" alt="Kakao" />
-                            <SNSIcon src="/google.png" alt="Google" />
-                            <SNSIcon src="/apple.png" alt="Apple" />
-                        </SNSButtonRow>
+                        {/*<SNSButtonRow>*/}
+                        {/*    <SNSIcon src="/naver.png" alt="Naver" />*/}
+                        {/*    <SNSIcon src="/kakao.png" alt="Kakao" />*/}
+                        {/*    <SNSIcon src="/google.png" alt="Google" />*/}
+                        {/*    <SNSIcon src="/apple.png" alt="Apple" />*/}
+                        {/*</SNSButtonRow>*/}
+                        <YellowButton onClick={() => navigate("/authentication")}>
+                            연동하고 계속하기
+                        </YellowButton>
                         <p style={{ fontSize: "13px", color: "#888" }}>
                             단 한 번의 연동으로 더 편리하게 사용하세요!
                         </p>
@@ -182,15 +185,18 @@ const TimeBox = styled.div<{ disabled: boolean }>`
 `;
 
 const HiddenTimeInput = styled.input`
-    opacity: 0;
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    cursor: pointer;
-    z-index: 2;
+    opacity: 0;              // ✅ 투명도 설정 (1은 완전 불투명) → 현재 input이 화면에 보임
+    position: absolute;      // ✅ 부모 요소 기준으로 절대 위치 배치 → top/left로 위치 지정 가능
+    top: 1vh;                  // ✅ 부모의 위쪽에서 0px 지점에 위치
+    left: 5vh;                 // ✅ 부모의 왼쪽에서 0px 지점에 위치
+    width: 50%;             // ✅ 부모 요소의 너비만큼 가득 채움 (TimeBox 전체를 덮음)
+    height: 70%;            // ✅ 부모 요소의 높이만큼 가득 채움
+    cursor: pointer;         // ✅ 마우스를 올렸을 때 손가락 모양 포인터로 변경 (클릭 가능한 느낌)
+    //z-index: 2;              // ✅ z축 우선순위 설정 (숫자가 높을수록 위에 표시됨) → 다른 요소보다 위에 위치
+    background-color:transparent ;   // ✅ 배경색을 빨간색으로 설정 (디버깅용으로 실제 화면에서 input 박스가 보임)
+    transform: scale(2.0);     // ✅ 전체 input을 1.5배 확대
 `;
+
 
 const TimeUnknownLabel = styled.label`
     font-size: 14px;
@@ -247,9 +253,12 @@ const ConfirmButton = styled.button`
 `;
 
 const ClockIcon = styled.span`
-  margin-left: auto;
+    margin-left: 13.5vh; // ✅ 아이콘 자체를 오른쪽으로 8px 밀어냄
   font-size: 16px;
   color: #aaa;
+    cursor: pointer;
+    position: absolute;
+    
 `;
 
 const ModalBackdrop = styled.div`

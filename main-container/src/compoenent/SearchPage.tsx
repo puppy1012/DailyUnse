@@ -28,6 +28,9 @@ export default function SearchPage() {
 const Wrapper = styled.div`
     padding: 16px;
     font-family: 'Pretendard', sans-serif;
+    height:100vh;//강사님픽
+    max-height:1200px;
+    overflow: hidden;
 `;
 
 const Header = styled.div`
