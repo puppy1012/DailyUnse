@@ -36,6 +36,10 @@ const HeaderWrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  text-align: center;
+  background-color: #fff;
+  z-index: 100;
+
 `;
 
 const RightWrapper = styled.div`

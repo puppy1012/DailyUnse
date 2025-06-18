@@ -14,7 +14,7 @@ const MainLayout = ({ children }: { children: React.ReactNode }) => {
         <AppLayout>
             <MainWrapper>
                 <MainContainer>
-                    <Header />
+                    {location.pathname !== "/fullpage" && <Header />}
                     {children}
                     {/* 🔥 /fullpage에서는 Footer 숨기기 */}
                     {/*{!["/fullpage", "/start-jeomsin", "/step2", "/step3", "/step4", "/search"].includes(location.pathname) && <Footer />}*/}
@@ -29,10 +29,9 @@ const MainLayout = ({ children }: { children: React.ReactNode }) => {
 
 export default MainLayout;
 
-// 기존 스타일 그대로 유지
 const AppLayout = styled.div`
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  height: 100%;
   background-color: #f9f9f9;
   display: flex;
   justify-content: center;
@@ -44,6 +43,7 @@ const MainWrapper = styled.div`
   height: 100%;
   display: flex;
   flex-direction: column;
+  margin: 0 auto;
 `;
 
 const MainContainer = styled.div`
@@ -54,4 +54,5 @@ const MainContainer = styled.div`
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
+
 `;

@@ -53,15 +53,13 @@ const Wrapper = styled.div`
   font-family: 'Pretendard', sans-serif;
   font-size: 12px;
   gap: 4px;
-  text-align: flex-start;
-  /* margin: 8px; */
 `;
 
 const SlideContainer = styled(SwiperSlide)`
   display: flex;
-  flex-direction: column;
-  justify-content: center;
-  text-align: flex-start;
+
+  text-align: left;
+  align-items: center;
   height: 32px;
   width: 100%;
 `;

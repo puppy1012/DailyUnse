@@ -18,8 +18,9 @@ export default function App() {
 const Wrapper = styled.div` 
   display: flex;
   flex-direction: column;
-  width: 480px;
-  height: 100%;
+  width: calc(480px - 48px);
+  height: auto;
+  margin-bottom: 20px;
   align-items: center;
 `
 const LoginText = styled.span`

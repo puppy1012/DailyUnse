@@ -45,7 +45,7 @@ export default function FetchWeather({ location }: Props) {
       
       } catch (err) {
         console.error('fetch error', err);
-        setError('날씨 정보를 불러오는 중 문제가 발생했습니다.');
+        setError('로딩중...');
       }
     };
 
@@ -86,7 +86,7 @@ const Divider = styled.span`
 `;
 
 const ErrorText = styled.p`
-  color: red;
+  color: #727272;
 `;
 
 const InfoText = styled.span``;

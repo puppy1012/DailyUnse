@@ -10,28 +10,29 @@ export default function NavBar() {
 
     return (
     <BottomNavWrapper>
-      <NavItem onClick={() => navigate("/fullpage")}>
-            <FaIcons.FaBook />
+
+        <NavItem onClick={() => navigate("/fullpage")}>
+            <FaIcons.FaBook/>
             점신
         </NavItem>
-      <NavItem onClick={() => navigate("/")}>
-        <GiIcons.GiCrystalBall />
-        운세
-      </NavItem>
-      <NavItem>
-        <GiIcons.GiCardRandom  />
-        타로
-      </NavItem>
-      <NavItem>
-        <MdIcons.MdSupportAgent />
-        상담
-      </NavItem>
-      <NavItem>
-        <FaIcons.FaShoppingBag />
-        점신몰
-      </NavItem>
+        <NavItem onClick={() => navigate("/")}>
+            <GiIcons.GiCrystalBall/>
+            운세
+        </NavItem>
+        <NavItem onClick={() => navigate("/service-ready")}>
+            <GiIcons.GiCardRandom/>
+            타로
+        </NavItem>
+        <NavItem onClick={() => navigate("/service-ready")}>
+            <MdIcons.MdSupportAgent/>
+            상담
+        </NavItem>
+        <NavItem onClick={() => navigate("/service-ready")}>
+            <FaIcons.FaShoppingBag/>
+            점신몰
+        </NavItem>
     </BottomNavWrapper>
-  );
+    );
 }
 
 

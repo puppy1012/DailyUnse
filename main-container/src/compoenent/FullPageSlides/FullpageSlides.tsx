@@ -9,64 +9,68 @@ import PageTwo from "./PageTwo";
 import PageThree from "./PageThree";
 import PageFour from "./PageFour";
 import PageFive from "./PageFive";
+import styled from "styled-components";
+import Header from "../Header";
+
+const HeaderSection = styled.div`
+    display: flex;
+    position: absolute;
+    max-width: calc(480px - 48px);
+    height: 40px;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    padding: 10px 24px 0;
+    box-Shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+    background-color: #fff;
+    top:0;
+    left:0;
+    right:0;
+    z-index: 100;
+`
+
 
 export const FullpageSlides=()=> {
     return (
-        <Swiper
+        <>
+        <HeaderSection>
+            <Header />    
+        </HeaderSection>
+        <Swiper 
             direction="vertical"
             slidesPerView={1}
-            mousewheel
+            mousewheel={{ forceToAxis: true }}
             modules={[Mousewheel]}
-            style={{ height: "100vh" }}
-        >
-            <SwiperSlide>
-                <PageOne />
-            </SwiperSlide>
-
-            <SwiperSlide>
-                <PageTwo />
-            </SwiperSlide>
-            <SwiperSlide>
-                <PageThree />
-            </SwiperSlide>
-            <SwiperSlide>
-                <PageFour />
-            </SwiperSlide>
-            <SwiperSlide>
-                <PageFive />
-            </SwiperSlide>
+            style={{ 
+                width: "100vw",
+                height: "100vh",
+                position: "fixed",
+                top: 0,
+                left: 0,
+                right:0,
+                // zIndex: 1,       
+                backgroundColor:"#f9f9f9", 
+      
+            }} 
+            >
+            {[PageOne, PageTwo, PageThree, PageFour, PageFive].map((Component, i) => (
+                <SwiperSlide key={i}>
+                <div style={{
+                    maxWidth: "480px",
+                    margin: "50px auto 0 ",
+                    height: "100%",
+                    paddingTop:"10px",
+                    overflow: "hidden",
+                    backgroundColor:"#fff",
+                    boxShadow: "0 0 10px rgba(0, 0, 0, 0.05)"
+                }}>
+                    <Component />
+                </div>
+                </SwiperSlide>
+            ))}
         </Swiper>
-    );
+        </>
+        );
 }
 
 export default FullpageSlides;
-
-// import React from "react";
-// import SlidePage from "./SlidePage.tsx";
-//
-// // import "./FullpageSlides.css"; // 업로드하신 CSS 사용
-// import slide1 from "../../../public/assets/slide/slide-1.png";
-// import slide2 from "../../../public/assets/slide/slide-2.png";
-// import slide3 from "../../../public/assets/slide/slide-3.png";
-// export default function FullpageSlides() {
-//     return (
-//         <div className="container" style={{ height: '100vh', background: '#fff'}} >
-//             <h1>Fullpage 슬라이드 단독 페이지</h1>
-//             <SlidePage
-//                 className="slide1"
-//                 title="첫 번째 슬라이드"
-//                 imageSrc={slide1}
-//             />
-//             <SlidePage
-//                 className="slide2"
-//                 title="두 번째 슬라이드"
-//                 imageSrc={slide2}
-//             />
-//             <SlidePage
-//                 className="slide3"
-//                 title="세 번째 슬라이드"
-//                 imageSrc={slide3}
-//             />
-//         </div>
-//     );
-// }
