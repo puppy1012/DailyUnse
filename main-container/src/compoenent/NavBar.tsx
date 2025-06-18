@@ -14,7 +14,7 @@ export default function NavBar() {
             <FaIcons.FaBook />
             점신
         </NavItem>
-      <NavItem>
+      <NavItem onClick={() => navigate("/")}>
         <GiIcons.GiCrystalBall />
         운세
       </NavItem>
