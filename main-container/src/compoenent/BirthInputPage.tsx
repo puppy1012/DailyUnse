@@ -10,7 +10,7 @@ const BirthInputPage = () => {
     const [year, setYear] = useState("");
     const [month, setMonth] = useState("");
     const [day, setDay] = useState("");
-    const [solar, setSolar] = useState(null); // null = 선택 안 됨
+    const [solar, setSolar] = useState<boolean | null>(null); // null = 선택 안 됨
 
     const handleSubmit = () => {
         if (!year || !month || !day || solar === null) {

@@ -73,6 +73,7 @@ const ConfirmButton = styled.button`
     padding: 16px 0;
     border: none;
     cursor: pointer;
+    border-radius: 8px;
 
     opacity: ${({ disabled }) => (disabled ? 0.4 : 1)};
     pointer-events: ${({ disabled }) => (disabled ? "none" : "auto")};

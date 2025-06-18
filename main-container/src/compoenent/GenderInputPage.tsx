@@ -27,8 +27,8 @@ const GenderInputPage = () => {
                 <SubLabel>성별</SubLabel>
                 <HintText>대운의 시기는 성별에 따라 달라요!</HintText>
             </LabelRow>
-
-            <GenderBoxWrapper expanded={!!gender}>
+            {/*//25.06.18 이승현 expanded오류 수정*/}
+            <GenderBoxWrapper $expanded={!!gender}>
                 <GenderBox selected={gender === "male"} onClick={() => setGender("male")}>
                     남자
                 </GenderBox>
@@ -93,11 +93,16 @@ const HintText = styled.span`
   font-size: 12px;
   color: #ccc;
 `;
-
-const GenderBoxWrapper = styled.div<{ expanded: boolean }>`
+//25.06.18 이승현 expanded오류 수정
+// const GenderBoxWrapper = styled.div<{ expanded: boolean }>`
+//     display: flex;
+//     gap: 12px;
+//     margin-bottom: ${({ expanded }) => (expanded ? "24px" : "100px")};
+// `;
+const GenderBoxWrapper = styled.div<{ $expanded: boolean }>`
     display: flex;
     gap: 12px;
-    margin-bottom: ${({ expanded }) => (expanded ? "24px" : "100px")};
+    margin-bottom: ${({ $expanded }) => ($expanded ? "24px" : "100px")};
 `;
 
 const GenderBox = styled.div<{ selected: boolean }>`
@@ -132,8 +137,8 @@ const ConfirmButton = styled.button`
   font-size: 16px;
   padding: 16px 0;
   border: none;
-  border-radius: 0;
   cursor: pointer;
+  border-radius: 8px;
   opacity: ${({ disabled }) => (disabled ? 0.5 : 1)};
 `;
 
