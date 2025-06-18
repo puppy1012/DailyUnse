@@ -8,28 +8,29 @@ import {useNavigate} from "react-router-dom";
 export default function NavBar() {
     const navigate = useNavigate();
 
-    return (<BottomNavWrapper>
-            <NavItem onClick={() => navigate("/fullpage")}>
-                <FaIcons.FaBook/>
-                점신
-            </NavItem>
-            <NavItem onClick={() => navigate("/")}>
-                <GiIcons.GiCrystalBall/>
-                운세
-            </NavItem>
-            <NavItem>
-                <GiIcons.GiCardRandom/>
-                타로
-            </NavItem>
-            <NavItem>
-                <MdIcons.MdSupportAgent/>
-                상담
-            </NavItem>
-            <NavItem>
-                <FaIcons.FaShoppingBag/>
-                점신몰
-            </NavItem>
-        </BottomNavWrapper>);
+    return (
+    <BottomNavWrapper>
+        <NavItem onClick={() => navigate("/fullpage")}>
+            <FaIcons.FaBook/>
+            점신
+        </NavItem>
+        <NavItem onClick={() => navigate("/")}>
+            <GiIcons.GiCrystalBall/>
+            운세
+        </NavItem>
+        <NavItem onClick={() => navigate("/service-ready")}>
+            <GiIcons.GiCardRandom/>
+            타로
+        </NavItem>
+        <NavItem onClick={() => navigate("/service-ready")}>
+            <MdIcons.MdSupportAgent/>
+            상담
+        </NavItem>
+        <NavItem onClick={() => navigate("/service-ready")}>
+            <FaIcons.FaShoppingBag/>
+            점신몰
+        </NavItem>
+    </BottomNavWrapper>);
 }
 
 

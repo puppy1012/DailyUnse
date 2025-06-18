@@ -20,7 +20,8 @@ export default function Footer() {
 const Wrapper = styled.div`
     display: flex;
     flex-direction: column;
-    margin-top: 100px;
+    margin-bottom: 80px;
+    
 `
 
 const MainText = styled.div`

@@ -10,6 +10,7 @@ import SignUpIntroPage from "./compoenent/SignUpIntroPage";
 import GenderInputPage from "./compoenent/GenderInputPage.tsx";
 import BirthInputPage from "./compoenent/BirthInputPage.tsx";
 import TimeInputPage from "./compoenent/TimeInputPage.tsx";
+import ServiceReady from "./compoenent/ServiceReady.tsx";
 
 const AuthenticationApp = lazy(()=>import("authenticationApp/App"));
 const NavigationBarApp=lazy(()=> import("navigationBarApp/App"));
@@ -30,6 +31,8 @@ function App() {
                     <Route path="/step2" element={<MainLayout><GenderInputPage /></MainLayout>} />
                     <Route path="/step3" element={<MainLayout><BirthInputPage /></MainLayout>} />
                     <Route path="/step4" element={<MainLayout><TimeInputPage /></MainLayout>} />
+                    <Route path="/service-ready" element={<MainLayout><ServiceReady /></MainLayout>} />
+
                 </Routes>
             </Suspense>
         </BrowserRouter>
