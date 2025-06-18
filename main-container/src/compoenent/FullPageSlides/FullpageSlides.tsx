@@ -11,12 +11,13 @@ import PageFour from "./PageFour";
 import PageFive from "./PageFive";
 import styled from "styled-components";
 import Header from "../Header";
+import NavBar from "../NavBar";
 
 const HeaderSection = styled.div`
     display: flex;
     position: absolute;
-    max-width: calc(480px - 48px);
-    height: 40px;
+    max-width: 480px;
+    height: 50px;
     justify-content: center;
     align-items: center;
     margin: 0 auto;
@@ -69,6 +70,7 @@ export const FullpageSlides=()=> {
                 </SwiperSlide>
             ))}
         </Swiper>
+        {/* <NavBar /> */}
         </>
         );
 }

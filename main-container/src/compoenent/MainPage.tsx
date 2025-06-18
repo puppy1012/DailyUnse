@@ -3,7 +3,18 @@ import FortuneSwiper from "./FortuneSwiper";
 import TodayQuote from "./TodayQuote";
 import InnerMenuBar from "./InnerMenuBar";
 import { useLocation } from "react-router-dom";// ✅ React Router에서 현재 위치 정보(location)를 가져오기 위한 훅 import
+import styled from 'styled-components';
 
+
+const Wrapper = styled.div`
+display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 480px;       // ✅ 폭 고정
+  margin: 0 auto;         // ✅ 가운데 정렬
+  box-sizing: border-box; // ✅ padding 등 계산 정확하게
+
+`
 
 // ✅ 메인 페이지 컴포넌트 정의
 export default function MainPage() {
@@ -12,7 +23,7 @@ export default function MainPage() {
     const { name } = location.state || {}; // 전달된 name이 없을 경우 대비해 || {} 처리
 
     return (
-        <>
+        <Wrapper>
             {/*/!* ✅ name이 있을 경우에만 인사 메시지를 출력 *!/*/}
             {/*{name && (*/}
             {/*    <div style={{ padding: "16px", fontWeight: "bold", fontSize: "18px" }}>*/}
@@ -28,6 +39,6 @@ export default function MainPage() {
 
             {/* ✅ 하단 내비게이션 바 출력 */}
             <InnerMenuBar />
-        </>
+        </Wrapper>
     );
 }
