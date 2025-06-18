@@ -6,6 +6,8 @@ const CounselorSearch = () => {
     const counselors = ["김신", "카로토", "혜광철리원", "천운"];
     const [isAutoSaveOn, setIsAutoSaveOn] = useState(false);
     const [showDeleteModal, setShowDeleteModal] = useState(false);
+    const [selectedField, setSelectedField] = useState<string | null>(null);
+    const [selectedCounselor, setSelectedCounselor] = useState<string | null>(null);
 
     return (
         <Wrapper>
@@ -44,16 +46,33 @@ const CounselorSearch = () => {
                 </SectionHeader>
                 <TagRow>
                     {fields.map((field) => (
-                        <Tag key={field}>{field}</Tag>
+                        <Tag
+                            key={field}
+                            onClick={() =>
+                                setSelectedField((prev) => (prev === field ? null : field))
+                            }
+                            selected={selectedField === field}
+                        >
+                            {field}
+                        </Tag>
                     ))}
                 </TagRow>
             </Section>
+
 
             <Section>
                 <SectionTitle>추천 상담사</SectionTitle>
                 <TagRow>
                     {counselors.map((name) => (
-                        <Tag key={name}>{name}</Tag>
+                        <Tag
+                            key={name}
+                            onClick={() =>
+                                setSelectedCounselor((prev) => (prev === name ? null : name))
+                            }
+                            selected={selectedCounselor === name}
+                        >
+                            {name}
+                        </Tag>
                     ))}
                 </TagRow>
             </Section>
@@ -84,15 +103,16 @@ const CounselorSearch = () => {
 export default CounselorSearch;
 
 const Wrapper = styled.div`
-    margin-top: 16px;
+    //padding: 16px;
     font-family: 'Pretendard', sans-serif;
+    background-color: #fff;
 `;
 
 const SearchInputWrapper = styled.div`
     background-color: #f5f5f5;
     border-radius: 12px;
     padding: 10px 12px;
-    margin-bottom: 20px;
+    margin: 16px 0;
     display: flex;
     align-items: center;
 `;
@@ -104,11 +124,12 @@ const SearchIcon = styled.span`
 `;
 
 const SearchInput = styled.input`
+    width: 100%;
     border: none;
     background: transparent;
     outline: none;
     font-size: 14px;
-    flex: 1;
+    color: #444;
 `;
 
 const Section = styled.div`
@@ -157,18 +178,29 @@ const TagRow = styled.div`
     margin-top: 8px;
 `;
 
-const Tag = styled.button`
-    padding: 6px 12px;
-    background-color: #f3f3f3;
-    border-radius: 16px;
-    font-size: 13px;
-    border: none;
+const Tag = styled.div<{ selected: boolean }>`
+    padding: 8px 12px;
+    border-radius: 20px;
     cursor: pointer;
-    color: #333;
-    transition: background-color 0.2s ease;
+    user-select: none;
+    transition: all 0.2s;
+
+    font-size: 12px;
+    font-weight: 400;
+
+    background-color: ${({ selected }) =>
+            selected ? "#fffbe6" : "#f2f2f2"};
+    border: 1.5px solid
+    ${({ selected }) => (selected ? "#facc15" : "transparent")};
+    color: ${({ selected }) => (selected ? "#d97706" : "inherit")};
 
     &:hover {
-        background-color: #e4e4e4;
+        background-color: ${({ selected }) =>
+                selected ? "#fff3c4" : "#e5e5e5"};
+    }
+
+    &:active {
+        transform: scale(0.96);
     }
 `;
 
