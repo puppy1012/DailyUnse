@@ -7,19 +7,8 @@ const TimeInputPage = () => {
     const navigate = useNavigate();
 
     const { name, gender, birth, solar } = location.state || {};
-    const [showTermsModal, setShowTermsModal] = useState(true);
+    const [showTermsModal, setShowTermsModal] = useState(false);
     const [showSNSModal, setShowSNSModal] = useState(false);
-
-    const handleFinalSubmit = () => {
-        const resultData = {
-            name,
-            gender,
-            birth,
-            solar,
-            birthTime: unknownTime ? null : birthTime,
-        };
-        navigate("/", { state: resultData });
-    };
 
     const [birthTime, setBirthTime] = useState("");
     const [unknownTime, setUnknownTime] = useState(false);
@@ -31,6 +20,10 @@ const TimeInputPage = () => {
             return;
         }
 
+        setShowTermsModal(true);
+    };
+
+    const handleFinalSubmit = () => {
         const resultData = {
             name,
             gender,
@@ -38,9 +31,7 @@ const TimeInputPage = () => {
             solar,
             birthTime: unknownTime ? null : birthTime,
         };
-
-        console.log("입력 완료:", resultData);
-        navigate("/", { state: resultData });
+        navigate("/", { state: resultData }); // ✅ 여기서만 이동!
     };
 
     return (
@@ -250,7 +241,7 @@ const ConfirmButton = styled.button`
     font-weight: bold;
     font-size: 16px;
     padding: 16px 0;
-    border: none;<CloseButton onClick={() => setShowSNSModal(false)}>×</CloseButton>
+    border: none;
     border-radius: 8px;
     cursor: pointer;
 `;

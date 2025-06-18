@@ -132,8 +132,8 @@ const ConfirmButton = styled.button`
   font-size: 16px;
   padding: 16px 0;
   border: none;
-  border-radius: 0;
   cursor: pointer;
+  border-radius: 8px;
   opacity: ${({ disabled }) => (disabled ? 0.5 : 1)};
 `;
 
