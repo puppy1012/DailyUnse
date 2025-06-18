@@ -1,21 +1,20 @@
 import { useState, useEffect } from "react";
+import styled from "styled-components";
+
+
 
 export default function FortuneForm() {
     const [name, setName] = useState("");
     const [birth, setBirth] = useState("");
-    const [fortuneList, setFortuneList] = useState<string[]>([]);
-    const [result, setResult] = useState<string | null>(null);
+    const [fortuneList, setFortuneList] = useState<{ title: string; content: string }[]>([]);
+    const [result, setResult] = useState<{ title: string; content: string } | null>(null);
 
-    // 운세 JSON 불러오기
+    // ✅ JSON 로딩만 useEffect에서 수행 (랜덤 X)
     useEffect(() => {
         fetch("/assets/fortuneForm/fortuneForm.json")
-            .then(res => res.json())
-            .then(data => {
-                const randomIndex = Math.floor(Math.random() * data.length);
-                const randomFortune = data[randomIndex];
-                setResult(randomFortune); // ✅ title + content 객체 저장
-            })
-            .catch(err => console.error("운세 파일 로딩 실패:", err));
+            .then((res) => res.json())
+            .then((data) => setFortuneList(data))
+            .catch((err) => console.error("운세 파일 로딩 실패:", err));
     }, []);
 
     const getAge = (birthDate: string): number => {
@@ -28,40 +27,109 @@ export default function FortuneForm() {
         }
         return age;
     };
+    const formatDate = (date: Date): string => {
+        const year = date.getFullYear();
+        const month = String(date.getMonth() + 1).padStart(2, "0"); // 월은 0부터 시작
+        const day = String(date.getDate()).padStart(2, "0");
 
+        return `${year}.${month}.${day}`;
+    };
     const getFortune = () => {
         if (!name || !birth || fortuneList.length === 0) return;
         const age = getAge(birth);
-        const randomFortune = fortuneList[Math.floor(Math.random() * fortuneList.length)];
-        setResult(`${age}세 ${name}님의 오늘의 운세는 다음과 같습니다:\n\n${randomFortune}`);
+        const today= formatDate(new Date());
+        const random = fortuneList[Math.floor(Math.random() * fortuneList.length)];
+        setResult({
+            title: `만${age}세 ${name}님의 운세~ ♬\n\n${today} 운세의 총운은 "${random.title}"입니다`,
+
+            content: random.content,
+        });
     };
 
     return (
-        <div style={{ padding: "1rem", maxWidth: "480px", margin: "0 auto" }}>
+        <Wrapper>
             <h2>🔮 오늘의 운세 확인</h2>
 
-            <input
+            <Input
                 type="text"
                 placeholder="이름"
                 onChange={(e) => setName(e.target.value)}
-                style={{ margin: "0.5rem", padding: "0.5rem" }}
             />
-            <input
+            <Input
                 type="date"
                 placeholder="생년월일"
                 onChange={(e) => setBirth(e.target.value)}
-                style={{ margin: "0.5rem", padding: "0.5rem" }}
             />
-            <button onClick={getFortune} disabled={!name || !birth}>
+            <Button onClick={getFortune} disabled={!name || !birth}>
                 운세 보기
-            </button>
+            </Button>
 
-            {result && (
-                <div style={{ marginTop: "1rem" }}>
-                    <h3>📜 {result.title} 운세</h3>
-                    <pre style={{ whiteSpace: "pre-wrap", fontSize: "1rem" }}>{result.content}</pre>
-                </div>
+            {result ? (
+                <ResultBox>
+                    <h3>📜 {result.title}</h3>
+                    <p>{result.content}</p>
+                </ResultBox>
+            ) : (
+                <ResultBox>
+                    <p>🔍 결과가 여기서 출력됩니다.</p>
+                </ResultBox>
             )}
-        </div>
+        </Wrapper>
     );
 }
+// ✅ 스타일드 컴포넌트 정의
+const Wrapper = styled.div`
+  padding: 1rem;
+  max-width: 480px;
+  margin: 0 auto;
+`;
+
+const Input = styled.input`
+    margin: 0.5rem 0;
+    padding: 0.75rem 1rem;
+    width: 100%;
+
+    border: 2px solid #ccc;
+    border-radius: 8px;
+    background-color: #fdfdfd;
+    font-size: 1rem;
+    color: #333;
+
+    box-sizing: border-box;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+
+    &:focus {
+        border-color: #673ab7;
+        box-shadow: 0 0 5px rgba(103, 58, 183, 0.3);
+        outline: none;
+    }
+
+    &::placeholder {
+        color: #aaa;
+        font-style: italic;
+    }
+`;
+
+const Button = styled.button`
+  margin-top: 1rem;
+  padding: 0.75rem;
+  background-color: #673ab7;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+
+  &:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+  }
+`;
+
+const ResultBox = styled.div`
+  margin-top: 1.5rem;
+  background-color: #f5f5f5;
+  padding: 1rem;
+  border-radius: 12px;
+  white-space: pre-wrap;
+  font-size: 1rem;
+`;

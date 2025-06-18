@@ -4,6 +4,7 @@ import TodayFortunePage from "@/compoenent/TodayFortunePage.tsx";
 import { useNavigate } from "react-router-dom"
 
 const InnerMenuBar = () => {
+    // 운세 메뉴 항목 정의 (이미지와 라벨)
     const items = [
         { src: "https://img.jeomsin.co.kr/mz_main_menu/srRtoWx0hLYAXMQf.png", label: "신년운세" },
         { src: "https://img.jeomsin.co.kr/mz_main_menu/bhBFo617ZJvcXR5T.png", label: "토정비결" },
@@ -13,30 +14,28 @@ const InnerMenuBar = () => {
         { src: "https://img.jeomsin.co.kr/mz_main_menu/mSAoRHyOPZrzVtuC.png", label: "지정일 운세" },
     ];
 
-    const [isModalOpen, setIsModalOpen] = useState(false);
+    const [isModalOpen, setIsModalOpen] = useState(false); // 모달 창 열림 여부
+    const [fortune, setFortune] = useState(""); // 불러온 운세 텍스트 저장
 
-    const closeModal = () => {
-        setIsModalOpen(false);
-    };
+    const closeModal = () => setIsModalOpen(false); // 모달 닫기 핸들러
 
-    const [fortune, setFortune] = useState(""); //운세 저장용
-
+    // ✅ 선택한 운세 종류(label)를 기반으로 운세 API 호출
     const fetchFortune = async (label) => {
-        const url = "https://mocki.io/v1/ea457ea8-5aa9-49b1-a44a-c0b3cdfffe56";
+        const url = "https://mocki.io/v1/ea457ea8-5aa9-49b1-a44a-c0b3cdfffe56"; // 모의 API
 
         try {
             const res = await fetch(url);
             const data = await res.json();
 
-            const messages = data[label]; // "오늘의 운세" → ["...", "..."]
+            const messages = data[label]; // 예: "오늘의 운세": [ "...", "..." ]
             if (Array.isArray(messages)) {
                 const randomIndex = Math.floor(Math.random() * messages.length);
-                setFortune(messages[randomIndex]);
+                setFortune(messages[randomIndex]); // 랜덤으로 하나 선택
             } else {
                 setFortune("운세 정보를 불러올 수 없습니다.");
             }
 
-            setIsModalOpen(true);
+            setIsModalOpen(true); // 모달 열기
         } catch (err) {
             setFortune("운세 불러오기 실패");
             setIsModalOpen(true);
@@ -45,6 +44,7 @@ const InnerMenuBar = () => {
 
     const navigate = useNavigate();
 
+    // "점신 시작하기" 버튼 클릭 시 경로 이동
     const goToSignupIntro = () => {
         navigate("/start-jeomsin");
     }
@@ -52,15 +52,25 @@ const InnerMenuBar = () => {
     return (
         <AppWrapper>
             <Card>
+                {/* 상단 설명 영역 */}
                 <Subtitle>
                     소름 돋는 <Highlight>미래 예측</Highlight>
                 </Subtitle>
                 <Title>가장 정확한 사주 풀이</Title>
 
+                {/* 운세 아이콘 그리드 영역 */}
                 <Grid>
                     {items.map((item, idx) => (
                         <GridItem key={idx}>
-                            <ImageWrapper onClick={() => fetchFortune(item.label)}>
+                            <ImageWrapper
+                                onClick={() => {
+                                    if (item.label === "오늘의 운세") {
+                                        navigate("/fortune-form"); // ✅ 특정 라벨 클릭 시 이동
+                                    } else {
+                                        fetchFortune(item.label); // ✅ 나머지는 기존 운세 모달
+                                    }
+                                }}
+                            >
                                 <Icon src={item.src} alt={item.label} />
                             </ImageWrapper>
                             <Label>{item.label}</Label>
@@ -69,14 +79,17 @@ const InnerMenuBar = () => {
                 </Grid>
             </Card>
 
+            {/* 운세 결과를 보여주는 모달 */}
             {isModalOpen && (
                 <ModalBackdrop onClick={closeModal}>
-                    <Modal onClick={(e) => e.stopPropagation()}>
+                    <Modal onClick={(e) => e.stopPropagation()}> {/* 클릭 전파 차단 */}
                         <CloseButton onClick={closeModal}>×</CloseButton>
                         <h2>당신의 앞날이 궁금하다면?</h2>
                         <p>지금 사주정보를 입력하고 점신에서 알아봐요!</p>
                         <p>{fortune || "운세를 불러오는 중입니다..."}</p>
-                        <YellowButton onClick = {goToSignupIntro}>점신 시작하기</YellowButton>
+
+                        {/* 버튼 두 개 */}
+                        <YellowButton onClick={goToSignupIntro}>점신 시작하기</YellowButton>
                         <GrayButton>기존 회원 로그인하기</GrayButton>
                     </Modal>
                 </ModalBackdrop>
