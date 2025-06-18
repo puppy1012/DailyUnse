@@ -33,6 +33,8 @@ const MenuSearch = () => {
         el?.scrollIntoView({ behavior: "smooth", inline: "center", block: "nearest" });
     }
 
+    const [selectedTag, setSelectedTag] = useState<string | null>(null);
+
     return (
         <Wrapper>
             {/*<Header>*/}
@@ -66,7 +68,15 @@ const MenuSearch = () => {
                 <SectionTitle>추천 검색</SectionTitle>
                 <TagRow>
                     {recommendedTags.map((tag) => (
-                        <Tag key={tag}>{tag}</Tag>
+                        <Tag
+                            key={tag}
+                            onClick={() =>
+                                setSelectedTag((prev) => (prev === tag ? null : tag)) // 클릭 토글
+                            }
+                            selected={selectedTag === tag}
+                        >
+                            {tag}
+                        </Tag>
                     ))}
                 </TagRow>
             </Section>
@@ -120,7 +130,7 @@ const MenuSearch = () => {
 export default MenuSearch;
 
 const Wrapper = styled.div`
-    padding: 16px;
+    //padding: 16px;
     font-family: 'Pretendard', sans-serif;
     background-color: #fff;
 `;
@@ -233,11 +243,30 @@ const TagRow = styled.div`
     margin-top: 8px;
 `;
 
-const Tag = styled.div`
-    padding: 6px 12px;
-    background-color: #f3f3f3;
-    border-radius: 16px;
-    font-size: 13px;
+const Tag = styled.div<{ selected: boolean }>`
+    padding: 8px 12px;
+    border-radius: 20px;
+    cursor: pointer;
+    user-select: none;
+    transition: all 0.2s;
+
+    font-size: 12px;
+    font-weight: 400;
+
+    background-color: ${({ selected }) =>
+            selected ? "#fffbe6" : "#f2f2f2"};
+    border: 1.5px solid
+    ${({ selected }) => (selected ? "#facc15" : "transparent")};
+    color: ${({ selected }) => (selected ? "#d97706" : "inherit")};
+
+    &:hover {
+        background-color: ${({ selected }) =>
+                selected ? "#fff3c4" : "#e5e5e5"};
+    }
+
+    &:active {
+        transform: scale(0.96);
+    }
 `;
 
 const CategoryTabs = styled.div`
