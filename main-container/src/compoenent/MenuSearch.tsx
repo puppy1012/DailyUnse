@@ -35,15 +35,15 @@ const MenuSearch = () => {
 
     return (
         <Wrapper>
-            <Header>
-                <BackButton onClick={() => navigate(-1)}>←</BackButton>
-                <Title>검색</Title>
-            </Header>
+            {/*<Header>*/}
+            {/*    <BackButton onClick={() => navigate(-1)}>←</BackButton>*/}
+            {/*    <Title>검색</Title>*/}
+            {/*</Header>*/}
 
-            <TabWrapper>
-                <Tab selected={tab === "menu"} onClick={() => setTab("menu")}>메뉴 검색</Tab>
-                <Tab selected={tab === "counselor"} onClick={() => setTab("counselor")}>상담사 검색</Tab>
-            </TabWrapper>
+            {/*<TabWrapper>*/}
+            {/*    <Tab selected={tab === "menu"} onClick={() => setTab("menu")}>메뉴 검색</Tab>*/}
+            {/*    <Tab selected={tab === "counselor"} onClick={() => setTab("counselor")}>상담사 검색</Tab>*/}
+            {/*</TabWrapper>*/}
 
             <SearchInputWrapper>
                 <SearchIcon>🔍</SearchIcon>
