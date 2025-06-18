@@ -62,6 +62,5 @@ const MyPageBtn = styled.button`
     margin: 5px;
     align-items: center;
     justify-content: center;
-
-    
+    cursor: pointer;
 `
