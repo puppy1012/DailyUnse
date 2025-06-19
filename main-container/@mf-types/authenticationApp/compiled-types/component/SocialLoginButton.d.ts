@@ -1,5 +1,5 @@
 import React from "react";
-type Provider = "google" | "kakao" | "github";
+type Provider = "kakao" | "google" | "github";
 interface Props {
     provider: Provider;
     onClick: () => void;
