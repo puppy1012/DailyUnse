@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import TodayFortunePage from "@/compoenent/TodayFortunePage.tsx";
 import { useNavigate } from "react-router-dom"
 
 const InnerMenuBar = () => {

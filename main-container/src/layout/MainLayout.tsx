@@ -14,6 +14,7 @@ const MainLayout = ({ children }: { children: React.ReactNode }) => {
         <AppLayout>
             <MainWrapper>
                 <MainContainer>
+                    {/*<Header/>*/}
                     {location.pathname !== "/fullpage" && <Header />}
                     {children}
                     {/* 🔥 /fullpage에서는 Footer 숨기기 */}
